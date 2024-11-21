@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct TreeNode{
+struct TreeNode{ // make Tree Structure Node
     int val;
     struct TreeNode* left;
     struct TreeNode* right;
@@ -16,9 +16,10 @@ struct TreeNode* Create_Node(int val){
     newNode->val=val;
     newNode->left=NULL;
     newNode->right=NULL;
-    return newNode;
+    return newNode; // set Node with Left and Right as NULL
 }
 
+// Function to add Node
 void Insert_Node(struct TreeNode** root,int val){
     struct TreeNode* newNode=Create_Node(val);
     if(*root==NULL){
@@ -26,12 +27,12 @@ void Insert_Node(struct TreeNode** root,int val){
         return;
     }
     struct TreeNode* temp=*root;
-    while(temp!=NULL){
-        if(temp->val==val){
+    while(temp!=NULL){ // loop continuously until a spot is found 
+        if(temp->val==val){ // if the value exists exit the loop( duplicates not allowed )
             printf("\n%d already Exists in the Tree!!",val);
             return;
         }
-        if(temp->val<val ){
+        if(temp->val<val ){ // if value is less than current node, go left,  else go right
             if(temp->right==NULL){
                 temp->right=newNode;
                 break;
@@ -51,7 +52,7 @@ void Insert_Node(struct TreeNode** root,int val){
 }
 
 
-void InOrder_Traversal(struct TreeNode* root){
+void InOrder_Traversal(struct TreeNode* root){ // show tree in Ascending order
     if(root==NULL) return;
     InOrder_Traversal(root->left);
     printf("%d\t",root->val);
@@ -66,7 +67,7 @@ void free_memory(struct TreeNode* root){
     free(root);
 }
 
-int Get_Height(struct TreeNode* root){
+int Get_Height(struct TreeNode* root){ // get the height/depth of the tree
     if (root==NULL) return 0;
     int left=Get_Height(root->left);
     int right=Get_Height(root->right);
