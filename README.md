@@ -13,3 +13,5 @@ queue.c => a linkedlist data structure implementing queue structue, add and remo
 stack.c => implements stack in linkedlist, push and pop in LIFO..
 trees.c => a tree implementation where 1 parent can have multiple children(datatype string of node values)..
 mergesort.c => mergesort algorithm done using array of preset values .. 
+graphDFS.c => Simple implementation of Depth First Search
+graphBFS.c => Simple implementation of Breadth First Search

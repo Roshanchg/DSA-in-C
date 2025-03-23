@@ -166,7 +166,7 @@ int isEmpty(struct linkedlist** stack){return (stack==NULL || *stack==NULL);}
 int getTotalNodes(struct Graphs* graph){
     int i=0;
     if(graph==NULL){return i;}
-    while(graph->next!=NULL){
+    while(graph!=NULL){
         i++;
         graph=graph->next;
     }
