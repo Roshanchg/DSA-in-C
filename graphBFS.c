@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#define VISITED_SIZE 100
+int visited[VISITED_SIZE];
 
 struct Node {
     int val;
@@ -109,7 +110,7 @@ struct linkedlist* make_queue(struct Node* node){
 }
 
 void preety_print(struct linkedlist* queue){
-    if(queue->next!=NULL){
+    while(queue!=NULL){
         printf("%d->\t",queue->node->val);
         queue=queue->next;
     }
@@ -191,28 +192,39 @@ void bfs(struct Graphs* graph,int search){
     }
 
     struct Node* temp=head;
-    int i=0;
+    int visitedCount=0;
     int graphSize=getTotalNodes(graph);
     enqueue(&queue,temp);
-    while(1){
+    while(!isEmpty(&queue)){
         temp=getFirst(queue);
         dequeue(&queue);
+        int isVisited=0;
+        for(int i=0;i<visitedCount;i++){
+            if(visited[i]==temp->val){
+                isVisited=1;
+                break;
+            }
+        }
+        if(isVisited){continue;}
+        visited[visitedCount++]=temp->val;
         if(temp->val==search){
             printf("\nValue Found");
             free_queue(&queue);
             return;
         }
-        for(int j=0;j<temp->connSize;j++){
+        for(int j=temp->connSize-1;j>=0;j--){
+            int alreadyVisited=0;
+            for(int k=0;k<visitedCount;k++){
+                if(visited[k]==temp->conn[j]->val){
+                    alreadyVisited=1;
+                    break;
+                }
+            }
+            if(!alreadyVisited){
             enqueue(&queue,temp->conn[j]);
+            }
         }
         preety_print(queue);
-        if(isEmpty(&queue)){
-            break;
-        }
-        if(i>graphSize){
-            break;
-        }
-        i++;
     }
     printf("\nNOT FOUND ");
     free_queue(&queue);

@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#define ARRAY_SIZE 100
+int visited[ARRAY_SIZE];
 
 struct Node {
     int val;
@@ -109,7 +110,7 @@ struct linkedlist* make_stack(struct Node* node){
 }
 
 void preety_print(struct linkedlist* stack){
-    if(stack->next!=NULL){
+    while(stack!=NULL){
         printf("%d->\t",stack->node->val);
         stack=stack->next;
     }
@@ -189,28 +190,37 @@ void dfs(struct Graphs* graph,int search){
     }
 
     struct Node* temp=find_node(graph,1);
-    int i=0;
+    int visitedCount=0;
     int graphSize=getTotalNodes(graph);
     push(&stack,temp);
-    while(1){
+    while(! isEmpty(&stack)){
         temp=getlast(stack);
         pop(&stack);
+        int isVisited=0;
+        for(int i=0;i<visitedCount;i++){
+            if(visited[i]==temp->val){
+                isVisited=1;
+                break;
+            }
+        }
+        if(isVisited){continue;}
+        visited[visitedCount++]=temp->val;
         if(temp->val==search){
             printf("\nValue Found");
             free_stack(&stack);
             return;
         }
-        for(int j=0;j<temp->connSize;j++){
-            push(&stack,temp->conn[j]);
+        for(int j=temp->connSize-1;j>=0;j--){
+            int alreadyVisited=0;
+            for(int k=0;k<visitedCount;k++){
+                if(visited[k]==temp->conn[j]->val){
+                    alreadyVisited=1;
+                    break;
+                }
+            }
+            if(!alreadyVisited) {push(&stack,temp->conn[j]);}
         }
         preety_print(stack);
-        if(isEmpty(&stack)){
-            break;
-        }
-        if(i>graphSize){
-            break;
-        }
-        i++;
     }
     printf("\nNOT FOUND ");
     free_stack(&stack);
