@@ -1,17 +1,86 @@
 # DSA-in-C
-Simple DSA program done in C.
 
-files title:
-binarySearch.c => Binary Search Algorithm done in Simple Array..
-BinaryTree.c => Making of Binary Tree (including insertion deletion etc)..
-CircularLinkedList.c => A type of linkedlist where the tail will point back to head..
-DoubleLinkedList.c => Linked List with both Next and Previous pointer to see its personal head and tail..
-HashMap.c => Implementation of simple hashmap (too simple hash_function) with options like insertion deletion , no duplicate allowed but option to
-              update previous value of same key..
-LinkedList.c => Simplest linkedlist among these files..
-queue.c => a linkedlist data structure implementing queue structue, add and remove in FIFO..
-stack.c => implements stack in linkedlist, push and pop in LIFO..
-trees.c => a tree implementation where 1 parent can have multiple children(datatype string of node values)..
-mergesort.c => mergesort algorithm done using array of preset values .. 
-graphDFS.c => Simple implementation of Depth First Search
-graphBFS.c => Simple implementation of Breadth First Search
+A collection of simple Data Structures and Algorithms implemented in C.
+
+---
+
+## 📁 File Descriptions
+
+### `binarySearch.c`
+Implements binary search on a sorted array using divide-and-conquer.
+
+---
+
+### `BinaryTree.c`
+Binary Tree implementation with support for:
+- Insertion
+- Deletion
+- Traversal
+
+---
+
+### `CircularLinkedList.c`
+Circular linked list where the tail points back to the head.  
+Useful for cyclic data structures.
+
+---
+
+### `DoubleLinkedList.c`
+Doubly linked list with both `next` and `prev` pointers.  
+Maintains separate head and tail for bidirectional traversal.
+
+---
+
+### `HashMap.c`
+Simple Hash Map implementation:
+- Basic hash function
+- Insertion and deletion
+- No duplicate keys (updates value if key exists)
+
+---
+
+### `LinkedList.c`
+Basic singly linked list.  
+Simplest dynamic data structure in this collection.
+
+---
+
+### `queue.c`
+Queue using a linked list (FIFO structure):
+- Enqueue (add)
+- Dequeue (remove)
+
+---
+
+### `stack.c`
+Stack using a linked list (LIFO structure):
+- Push (add)
+- Pop (remove)
+
+---
+
+### `trees.c`
+General Tree where a parent can have multiple children.  
+Node values are stored as strings.
+
+---
+
+### `mergesort.c`
+Merge Sort algorithm on a preset array of integers.  
+Uses recursion and divide-and-conquer.
+
+---
+
+### `graphDFS.c`
+Graph traversal using **Depth-First Search (DFS)**.
+
+---
+
+### `graphBFS.c`
+Graph traversal using **Breadth-First Search (BFS)**.
+
+---
+
+## 📌 Notes
+This project is for learning purposes.  
+Each file demonstrates the core logic of basic data structures and algorithms in a minimal, easy-to-understand way.
